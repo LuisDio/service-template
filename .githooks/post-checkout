@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+set -e
+
+# Check if pre-commit is installed
+if ! command -v pre-commit &>/dev/null; then
+  echo "pre-commit is not installed. Please run: pip install pre-commit"
+  exit 0
+fi
+
+# Check if pre-commit hook already exists in .git/hooks
+if [ ! -f .git/hooks/pre-commit ]; then
+  echo "Installing pre-commit hooks..."
+  pre-commit install
+fi
