@@ -1,0 +1,38 @@
+title = "Gitleaks Configuration"
+
+[allowlist]
+description = "Ignore test files and dependency locks"
+paths = [
+".*\\.test\\..*",
+"(^|/)test/.*",
+"(^|/)spec/.*",
+"node_modules/.*",
+"package-lock\\.json",
+"yarn\\.lock"
+]
+
+[[rules]]
+id = "generic-api-key"
+description = "Generic API Key"
+regex = "(?i)(['\"]?[a-z0-9_-]*api[_-]?key['\"]?\\s*[:=]\\s*['\"][0-9a-zA-Z]{32,45}['\"])"
+entropy = 3.5
+
+[[rules]]
+id = "aws-access-key"
+description = "AWS Access Key ID"
+regex = "(A3T[A-Z0-9]|AKIA|AGPA|AIDA|AROA|AIPA|ANPA|ANVA|ASIA)[A-Z0-9]{16}"
+
+[[rules]]
+id = "aws-secret-key"
+description = "AWS Secret Access Key"
+regex = "(?i)aws(.{0,20})?['\"][0-9a-zA-Z\\/+=]{40}['\"]"
+
+[[rules]]
+id = "github-token"
+description = "GitHub Token"
+regex = "(?i)github(.{0,20})?['\"][0-9a-zA-Z]{35,40}['\"]"
+
+[[rules]]
+id = "password-in-code"
+description = "Password in Code"
+regex = "(?i)(password|pwd|pass)[^\\n]{0,20}['\"][0-9a-zA-Z!@#$%^&*()_+]{8,}['\"]"
