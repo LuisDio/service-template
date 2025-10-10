@@ -1,0 +1,27 @@
+name: "CodeQL Config"
+
+queries:
+  - uses: security-and-quality # Uses both security and quality queries
+  - uses: security-extended # Additional security queries
+
+paths:
+  - src
+  - lib
+paths-ignore:
+  - "**/test/**"
+  - "**/tests/**"
+  - "**/*.test.*"
+  - "**/node_modules/**"
+  - "**/vendor/**"
+  - "**/__pycache__/**"
+
+query-filters:
+  - exclude:
+      problem.severity:
+        - warning
+        - recommendation
+
+disable-default-queries: false
+
+output:
+  sarif-add-snippets: true
