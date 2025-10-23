@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   call-shared-pipeline:
-    uses: LuisDio/devsecops-shared/.github/workflows/shared-devsecops.yml@main
+    uses: LuisDio/secops-shared-workflow/.github/workflows/shared-devsecops.yml@main
     with:
       app-name: my-awesome-app
       language: javascript
